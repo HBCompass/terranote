@@ -4,8 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def note():
-
-
+	return render_template(".html")
 
 
 
