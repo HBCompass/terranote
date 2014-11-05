@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/static/note.css" />
+
+        <div class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <img src=""><a class="navbar-brand" href="/">TERRA<strong>Note</strong></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                            {% if g.logged_in %}
+                            <li> <a href="">Log Out</a></li> 
+                            {% else %}
+                            <li><a href="">Log In</a></li>
+                            {% endif %} 
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+    
+    </head>
+    <body>
+
+
+        {% block body %}
+        {% endblock %}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/static/movies.js"></script> 
+    </body>
+</html>
