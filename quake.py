@@ -1,5 +1,7 @@
 import json
 import requests
+from datetime import datetime
+import time
 
 def get_quake():
 	quake = {}
@@ -13,11 +15,11 @@ def get_quake():
 	quake['coordinates'] = r.json()['features'][0]['geometry']['coordinates']
 	quake['latitute'] = r.json()['features'][0]['geometry']['coordinates'][0]
 	quake['longitude'] = r.json()['features'][0]['geometry']['coordinates'][1]
-	quake['time'] = r.json()['features'][0]['properties']['time']
+	quake['time'] = time.strftime('%m-%d-%Y %H:%M:%S', time.gmtime((r.json()['features'][0]['properties']['time'])/1000))
 	quake['url'] = r.json()['features'][0]['properties']['url']
 	return quake
 
-print get_quake()
+#print get_quake()
 
 # Original pull in format for testing:
 
@@ -31,7 +33,7 @@ print get_quake()
 # coordinates = r.json()['features'][0]['geometry']['coordinates']
 # latitute = r.json()['features'][0]['geometry']['coordinates'][0]
 # longitude = r.json()['features'][0]['geometry']['coordinates'][1]
-# time = r.json()['features'][0]['properties']['time']
+# time = time.strftime('%m-%d-%Y %H:%M:%S', time.gmtime((r.json()['features'][0]['properties']['time'])/1000))
 # url = r.json()['features'][0]['properties']['url']
 
 # print "Event ID:", event_id
@@ -42,5 +44,8 @@ print get_quake()
 # print "Place:", place
 # print "Latitude:", latitute
 # print "Longitude:", longitude
-# print "Time:", time
+print "Time:", time
 # print "URL:", url
+
+
+#Got datetime solution here: http://stackoverflow.com/questions/12458595/convert-epoch-timestamp-in-python

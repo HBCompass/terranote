@@ -8,7 +8,7 @@ def note():
 	# call get_quake
 	quake = get_quake()
 	# pass dictionary k,v to jinja template
-	return render_template("home.html", quake=quake)
+	return render_template("quake.html", quake=quake)
 
 
 if (__name__)=="__main__":
