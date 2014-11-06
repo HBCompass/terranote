@@ -19,6 +19,21 @@ def get_quake():
 
 print get_quake()
 
+# Original pull in format for testing:
+
+# r = requests.get("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+# event_id = r.json()['features'][0]['id']
+# depth = r.json()['features'][0]['geometry']['coordinates'][2]
+# title = r.json()['features'][0]['properties']['title']
+# quake_type = r.json()['features'][0]['properties']['type']
+# magnitude = r.json()['features'][0]['properties']['mag']
+# place = r.json()['features'][0]['properties']['place']
+# coordinates = r.json()['features'][0]['geometry']['coordinates']
+# latitute = r.json()['features'][0]['geometry']['coordinates'][0]
+# longitude = r.json()['features'][0]['geometry']['coordinates'][1]
+# time = r.json()['features'][0]['properties']['time']
+# url = r.json()['features'][0]['properties']['url']
+
 # print "Event ID:", event_id
 # print "Title:", title
 # print "Quake Type:", quake_type

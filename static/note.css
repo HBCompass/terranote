@@ -1,3 +1,57 @@
+body {
+	background-color: #000b17;
+}
+
 .body{
 	padding-left: 50px;
+	width: 30%;
+	color: #FFFFFF;
+}
+
+.header{
+	margin-bottom: 25px;
+}
+
+.icon{
+	float:left;
+}
+
+.type{
+	margin-left: 25px;
+	padding-top: 5px;
+}
+
+img.icon{
+	height: 30px;
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.headline{
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.summary{
+	
+}
+
+.post-time{
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 10px;
+}
+
+.share{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+.attribution{
+	text-align: right;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 8px;
 }
