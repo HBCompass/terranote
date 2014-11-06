@@ -12,10 +12,14 @@
 		</div>
 
 		<div class="summary">
-			<p>A {{ quake.magnitude }} earthquake struck {{ quake.place }} on (<em>day of the week</em>). The quake hit at {{ quake.time }}.
-
+		<p>A {{ quake.magnitude }} earthquake struck {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The quake hit at {{ quake.time.strftime('%I:%M %p') }}.
+			{% if quake.depth <= 70 %}
 			<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
-
+			{% elif quake.depth > 300 %}
+			<p>The deep quake occurred {{ quake.depth }} km below the ground.</p>
+			{% else %}
+			<p>The quake happened {{ quake.depth }} km below the ground.</p>
+			{% endif %}
 			<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
 		</div> 
 
