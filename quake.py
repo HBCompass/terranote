@@ -17,6 +17,8 @@ def get_quake():
 	quake['longitude'] = r.json()['features'][0]['geometry']['coordinates'][1]
 	quake['time'] = datetime.fromtimestamp(r.json()['features'][0]['properties']['time']/1000)
 	quake['url'] = r.json()['features'][0]['properties']['url']
+	# get the datetime for when the data is retrieved, summary written
+	quake['recordtime'] = datetime.now()
 	return quake
 
 #print get_quake()
@@ -34,6 +36,7 @@ def get_quake():
 # longitude = r.json()['features'][0]['geometry']['coordinates'][1]
 # time = r.json()['features'][0]['properties']['time']
 # url = r.json()['features'][0]['properties']['url']
+# recordtime = datetime.now()
 
 # print "Event ID:", event_id
 # print "Title:", title
@@ -45,3 +48,4 @@ def get_quake():
 # print "Longitude:", longitude
 # print "Time:", time
 # print "URL:", url
+# print "RecordTime:", recordtime

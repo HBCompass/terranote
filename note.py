@@ -11,5 +11,10 @@ def note():
 	return render_template("quake.html", quake=quake)
 
 
+@app.route("/fire")
+def fire_note():
+	return render_template("fire.html")
+
+
 if (__name__)=="__main__":
 	app.run(debug = True)
