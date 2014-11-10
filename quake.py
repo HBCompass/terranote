@@ -19,6 +19,7 @@ def get_quake():
 	quake['url'] = r.json()['features'][0]['properties']['url']
 	quake['type'] = r.json()['features'][0]['properties']['type']
 	quake['status'] = r.json()['features'][0]['properties']['status']
+	quake['tsunami'] = r.json()['features'][0]['properties']['tsunami']
 	# get the datetime for when the summary is written
 	quake['recordtime'] = datetime.now()
 	return quake

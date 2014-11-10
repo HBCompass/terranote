@@ -24,6 +24,12 @@
 				<p>The quake happened {{ quake.depth }} km below the ground.</p>
 				{% endif %}
 
+				<div class="tsunami">
+				{% if quake.tsunami == 1 %}
+				<p>Due to the quake's magnitude and location, the USGS recommends being aware of the possibility of a tsunami. For the most recent information on tsunami watches and warnings, visit the <a href="http://www.tsunami.gov/">NOAA Tsunami Warning Center</a>.
+				{% endif %}
+				</div>
+
 				<div class="review_status">
 				{% if quake.status == 'automatic' %} 
 				<p>This note is based off of data automatically posted by the USGS.</p>
