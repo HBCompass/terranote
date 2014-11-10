@@ -23,6 +23,14 @@
 				{% else %}
 				<p>The quake happened {{ quake.depth }} km below the ground.</p>
 				{% endif %}
+
+				<div class="review_status">
+				{% if quake.status == 'automatic' %} 
+				<p>This note is based off of data automatically posted by the USGS.</p>
+				{% else %}
+				<p>This note is based off of data that has been reviewed by a representative of the USGS.</p>
+				{% endif %}
+				</div>
 				<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
 			</div> 
 
@@ -45,6 +53,13 @@
 				<p>The deep shaking occurred {{ quake.depth }} km below the ground.</p>
 				{% else %}
 				{% endif %}
+				<div class="review_status">
+				{% if quake.status == 'automatic' %} 
+				<p>This note is based off of data automatically posted by the USGS.</p>
+				{% else %}
+				<p>This note is based off of data that has been reviewed by a representative of the USGS.</p>
+				{% endif %}
+				</div>
 				<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
 			</div> 
 
@@ -52,7 +67,7 @@
 		{% endif %}
 
 		<div class="post-time">
-			Note generated: {{ quake.recordtime.strftime('%b / %d / %Y at %I:%M %p') }}.
+			Note generated: {{ quake.recordtime.strftime('%b %d, %Y at %I:%M %p') }}.
 		</div>
 
 		<div class="share">
