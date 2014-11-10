@@ -2,26 +2,54 @@
 {% block body %}
 
 	<div class="body">
-		<div class"header">
-			<img class="icon" src="/static/images/quake-icon.png"/>
-			<h3 class="type">EARTHQUAKE</h3>
-		</div>
 
-		<div class="headline">
-			<h4>{{ quake.title }}</h4>
-		</div>
+		{% if quake.type == 'earthquake' %}
 
-		<div class="summary">
-		<p>A {{ quake.magnitude }} earthquake struck {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The quake hit at {{ quake.time.strftime('%I:%M %p') }}.
-			{% if quake.depth <= 70 %}
-			<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
-			{% elif quake.depth > 300 %}
-			<p>The deep quake occurred {{ quake.depth }} km below the ground.</p>
-			{% else %}
-			<p>The quake happened {{ quake.depth }} km below the ground.</p>
-			{% endif %}
-			<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
-		</div> 
+			<div class"header">
+				<img class="icon" src="/static/images/quake-icon.png"/>
+				<h3 class="type">EARTHQUAKE</h3>
+			</div>
+
+			<div class="headline">
+				<h4>{{ quake.title }}</h4>
+			</div>
+
+			<div class="summary">
+			<p>A {{ quake.magnitude }} earthquake struck {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The quake hit at {{ quake.time.strftime('%I:%M %p') }}.
+				{% if quake.depth <= 70 %}
+				<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
+				{% elif quake.depth > 300 %}
+				<p>The deep quake occurred {{ quake.depth }} km below the ground.</p>
+				{% else %}
+				<p>The quake happened {{ quake.depth }} km below the ground.</p>
+				{% endif %}
+				<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
+			</div> 
+
+		{% elif quake.type == 'quarry' %}
+
+			<div class"header">
+				<img class="icon" src="/static/images/quake-icon.png"/>
+				<h3 class="type">QUARRY BLAST</h3>
+			</div>
+
+			<div class="headline">
+				<h4>{{ quake.title }}</h4>
+			</div>
+
+			<div class="summary">
+			<p>A {{ quake.magnitude }} shake was felt {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.time.strftime('%I:%M %p') }}.
+				{% if quake.depth <= 70 %}
+				<p>The shallow shaking occurred {{ quake.depth }} km below the ground.</p>
+				{% elif quake.depth > 300 %}
+				<p>The deep shaking occurred {{ quake.depth }} km below the ground.</p>
+				{% else %}
+				{% endif %}
+				<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
+			</div> 
+
+		
+		{% endif %}
 
 		<div class="post-time">
 			Note generated: {{ quake.recordtime.strftime('%b / %d / %Y at %I:%M %p') }}.
