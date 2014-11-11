@@ -3,7 +3,7 @@
 
 	<div class="body">
 
-		{% if quake.type == 'earthquake' %}
+		{% if quake.seismictype == 'earthquake' %}
 
 			<div class"header">
 				<img class="icon" src="/static/images/quake-icon.png"/>
@@ -32,15 +32,15 @@
 
 				<div class="review_status">
 				{% if quake.status == 'automatic' %} 
-				<p>This note is based off of data automatically posted by the USGS.</p>
+				<p>This note is based off of computer-generated data and has not yet been reviewed by a seismologist.</p>
 				{% else %}
-				<p>This note is based off of data that has been reviewed by a representative of the USGS.</p>
+				<p>This note is based off of data that has been reviewed by a seismologist.</p>
 				{% endif %}
 				</div>
 				<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
 			</div> 
 
-		{% elif quake.type == 'quarry' %}
+		{% elif quake.seismictype == 'quarry' %}
 
 			<div class"header">
 				<img class="icon" src="/static/images/quake-icon.png"/>

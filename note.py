@@ -5,15 +5,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def note():
-	# call get_quake
-	quake = get_quake()
+	# get most recent quake record
+	
 	# pass dictionary k,v to jinja template
 	return render_template("quake.html", quake=quake)
-
-
-@app.route("/fire")
-def fire_note():
-	return render_template("fire.html")
 
 
 if (__name__)=="__main__":
