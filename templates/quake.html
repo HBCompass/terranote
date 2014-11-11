@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="summary">
-			<p>A {{ quake.magnitude }} earthquake struck {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The quake hit at {{ quake.time.strftime('%I:%M %p') }}.
+			<p>A {{ quake.magnitude }} earthquake struck {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.time.strftime('%I:%M %p') }}.
 				{% if quake.depth <= 70 %}
 				<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
 				{% elif quake.depth > 300 %}
@@ -83,6 +83,13 @@
 		<div class="attribution">
 			<em>Information provided by the USGS.</em>
 		</div>
+
+	</div>
+
+	<div class="map">
+
+	
+
 
 	</div>
 

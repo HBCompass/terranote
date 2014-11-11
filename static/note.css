@@ -55,3 +55,7 @@ img.icon{
 	padding-bottom: 10px;
 	font-size: 8px;
 }
+
+#map_canvas {
+	margin: 0; padding: 0; height: 100%;
+}
