@@ -5,7 +5,7 @@ import time
 
 def get_quake():
 	quake = {}
-	r = requests.get("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+	r = requests.get("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
 	quake['event_id'] = r.json()['features'][0]['id']
 	quake['depth'] = r.json()['features'][0]['geometry']['coordinates'][2]
 	quake['title'] = r.json()['features'][0]['properties']['title']
