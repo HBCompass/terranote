@@ -5,16 +5,30 @@ import time
 from model import Quake
 
 def get_quake():
-	quake = newQuake
-	r = requests.get("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
+	
+	r = requests.get("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_hour.geojson")
 	
 	for feature in r.json()['features']:
-		new_quake = model.Quake(event_id = feature['id'], depth = feature['depth'], title = feature['title'], quake_type = feature['quake_type'], magnitude = feature[magnitude''], place = feature['place'], coordinates = feature['coordinates'], latitude = feature['latitude'], longitude = feature['longitude'], time = feature['time'], url = feature['url'], seismictype = feature['seismictype'], status = feature['status'], felt = feature['felt'], tsunami = feature['tsunami'], recordtime = datetime.now())
+		new_quake = Quake(
+			quake_id = feature['id'], 
+			title = feature['title'],
+			quake_type = feature['quake_type'],
+			magnitude = feature['magnitude'],
+			place = feature['place'],
+			latitude = feature[0]['geometry']['coordinates'][0],
+			longitude = feature[0]['geometry']['coordinates'][1],
+			depth = feature[0]['geometry']['coordinates'][2],
+			quake_datetime = feature['time'],
+			url = feature['url'],
+			seismictype = feature['seismictype'],
+			status = feature['status'],
+			felt = feature['felt'],
+			tsunami = feature['tsunami'],
+			recordtime = datetime.now())
 
 		session.merge(new_quake)
 
-
-
+	session.commit()
 
 # Dictionary Version
 	# quake = {}
