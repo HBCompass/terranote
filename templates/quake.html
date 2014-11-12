@@ -11,11 +11,11 @@
 			</div>
 
 			<div class="headline">
-				<h4>{{ quake.title }}</h4>
+				<h4>{{ quake.quake_title }}</h4>
 			</div>
 
 			<div class="summary">
-			<p>A {{ quake.magnitude }} earthquake struck {{ quake.datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.datetime.strftime('%I:%M %p') }}.
+			<p>A {{ quake.magnitude }} earthquake struck {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
 				{% if quake.depth <= 70 %}
 				<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
 				{% elif quake.depth > 300 %}
@@ -48,11 +48,11 @@
 			</div>
 
 			<div class="headline">
-				<h4>{{ quake.title }}</h4>
+				<h4>{{ quake.quake_title }}</h4>
 			</div>
 
 			<div class="summary">
-			<p>A {{ quake.magnitude }} shake was felt {{ quake.time.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.time.strftime('%I:%M %p') }}.
+			<p>A {{ quake.magnitude }} shake was felt {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
 				{% if quake.depth <= 70 %}
 				<p>The shallow shaking occurred {{ quake.depth }} km below the ground.</p>
 				{% elif quake.depth > 300 %}

@@ -4,7 +4,6 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.orm import sessionmaker, relationship, backref, scoped_session
 from datetime import datetime
-# import quake
 
 engine = create_engine("sqlite:///terranote.db", echo=False)
 session = scoped_session(sessionmaker(bind=engine,
@@ -21,12 +20,12 @@ class Quake(Base):
 
     # id = Column(Integer, primary_key = True)
     quake_id = Column(String(50), primary_key = True)
-    title = Column(String(400), nullable = False)
+    quake_title = Column(String, nullable = False)
     quake_type = Column(String(25), nullable = False)
     magnitude = Column(Float, nullable = False)
-    place = Column(String(500), nullable = False)
+    place = Column(String, nullable = False)
     latitude = Column(Float, nullable = False)
-    longtitude = Column(Float, nullable = False)
+    longitude = Column(Float, nullable = False)
     depth = Column(Float, nullable = False)
     quake_datetime = Column(DateTime, nullable = False)
     url = Column(String, nullable = False)
