@@ -20,6 +20,8 @@ def get_quake():
 			place = feature['properties']['place'],
 			latitude = feature['geometry']['coordinates'][0],
 			longitude = feature['geometry']['coordinates'][1],
+			# convert km to miles by * by 0.62 ??
+			# depth = round((feature['geometry']['coordinates'][2]) * 0.62)
 			depth = feature['geometry']['coordinates'][2],
 			quake_datetime = datetime.fromtimestamp(feature['properties']['time']/1000),
 			url = feature['properties']['url'],

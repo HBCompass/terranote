@@ -17,11 +17,11 @@
 			<div class="summary">
 			<p>A {{ quake.magnitude }} earthquake struck {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
 				{% if quake.depth <= 70 %}
-				<p>The shallow quake occurred {{ quake.depth }} km below the ground.</p>
+				<p>The shallow quake occurred {{ quake.depth }} kilometers below the ground.</p>
 				{% elif quake.depth > 300 %}
-				<p>The deep quake occurred {{ quake.depth }} km below the ground.</p>
+				<p>The deep quake occurred {{ quake.depth }} kilometers below the earth's surface.</p>
 				{% else %}
-				<p>The quake happened {{ quake.depth }} km below the ground.</p>
+				<p>The quake happened {{ quake.depth }} kilometers below the ground.</p>
 				{% endif %}
 
 				<div class="tsunami">
@@ -54,9 +54,9 @@
 			<div class="summary">
 			<p>A {{ quake.magnitude }} shake was felt {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
 				{% if quake.depth <= 70 %}
-				<p>The shallow shaking occurred {{ quake.depth }} km below the ground.</p>
+				<p>The shallow shaking occurred {{ quake.depth }} kilometers below the ground.</p>
 				{% elif quake.depth > 300 %}
-				<p>The deep shaking occurred {{ quake.depth }} km below the ground.</p>
+				<p>The deep shaking occurred {{ quake.depth }} kilometers below the earth's surface.</p>
 				{% else %}
 				{% endif %}
 				<div class="review_status">
