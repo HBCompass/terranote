@@ -12,6 +12,20 @@ def note():
 	# pass dictionary k,v to jinja template
 	return render_template("quake.html", quake=quake)
 
+@app.route("/quakes")
+def quake_notes():
+	quakes = Quake.query.all()
+	return render_template("quakes.html", quakes=quakes)
+
+@app.route("/quakes/<quake_id>")
+def quake_note(quake_id):
+	# quake = db_session.query(Quake).first()
+	# quake = db_session.query(Quake).filter_by(Quake.quake_id == quake_id)
+	quake = Quake.query.get(quake_id)
+	return render_template("quake.html", quake=quake)
+
+
+
 
 if __name__=="__main__":
 	app.run(debug = True)

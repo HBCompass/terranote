@@ -10,6 +10,8 @@
 
 	// Pull in location from database
 
+	
+
  	// Pull in magnitude from database
 
  	function initialize() {
