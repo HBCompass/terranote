@@ -1,6 +1,14 @@
 body {
-	background-color: #000b17;
+	background-color: #04162b;
 	color: #FFFFFF
+}
+
+.navbar-inverse {
+	background-color: #000b17;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #FFFFFF;
 }
 
 .column-left{ float: left; width: 33%; }
@@ -65,7 +73,6 @@ img.icon{
 }
 
 #map_canvas {
-	height: 100%; margin: 0; padding: 0;
+	height: 400px;
+	width: 100%;
 }
-
-#map { position:absolute; top:0; bottom:0; width:100%; }
