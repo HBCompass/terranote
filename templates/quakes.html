@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+
+
+{% endblock %}
+{% block body %}
+
+
+<div class="quake-list">
+
+Quakes:
+
+{% for quake in quakes %}
+	
+	<p> <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </p>
+
+{% endfor %}
+
+
+<div class="quakes-canvas"
+
+</div>
+
+{% endblock %}

@@ -3,6 +3,10 @@ body {
 	color: #FFFFFF
 }
 
+.navbar{
+	margin-bottom: 0px;
+}
+
 .navbar-inverse {
 	background-color: #000b17;
 }
@@ -11,13 +15,21 @@ body {
 	color: #FFFFFF;
 }
 
-.column-left{ float: left; width: 33%; }
-.column-right{ float: right; width: 33%; }
-.column-center{ display: inline-block; width: 33%; }
-
 .note{
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	color: #FFFFFF;
+}
+
+.quake-list{
 	padding-left: 50px;
 	color: #FFFFFF;
+}
+
+#quakes-canvas{
+	height: 400px;
+	width: 100%;
 }
 
 .map{
@@ -44,7 +56,7 @@ img.icon{
 }
 
 .headline{
-	margin-top: 25px;
+	margin-top: 20px;
 	margin-bottom: 25px;
 }
 
@@ -67,7 +79,7 @@ img.icon{
 
 .attribution{
 	text-align: right;
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-bottom: 10px;
 	font-size: 8px;
 }
@@ -75,4 +87,21 @@ img.icon{
 #map_canvas {
 	height: 400px;
 	width: 100%;
+}
+
+#quake-background {
+	background-image: url("/static/images/quake-blur-sfw.jpg");
+}
+
+#note-background {
+	margin-top: 75px;
+	margin-bottom: 75px;
+	background: rgba(4, 22, 43, 0.7);
+	/*background: rgb(4, 22, 43);*/
+}
+
+#share {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
 }

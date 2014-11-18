@@ -9,14 +9,14 @@
       	var mapCanvas = document.getElementById('map_canvas');
         var mapOptions = {
           center: myLatlng,          
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          zoom: 3,
+          mapTypeId: google.maps.MapTypeId.TERRAIN
         };
         var map = new google.maps.Map(mapCanvas, mapOptions);
         
         var marker = new google.maps.Marker({
 	     	position: myLatlng,
-	      	icon: getCircle({{ quake.magnitude }})
+	     	icon: getCircle({{ quake.magnitude }})
       	});
       	marker.setMap(map);
       }
@@ -32,11 +32,6 @@
 		};
       }
 
-
-
-
-
-
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
@@ -47,103 +42,150 @@
 
 	<!-- The template for the quake note. -->
 
-	<div class="col-md-4">
-		<div class="note">
+	<div class="col-sm-4" id="quake-background">
 
-			{% if quake.seismictype == 'earthquake' %}
+		<div class="col-sm-2"></div>
 
-				<div class="header">
-					<img class="icon" src="/static/images/quake-icon.png"/>
-					<h3 class="type">EARTHQUAKE</h3>
-				</div>
+			<div class="col-sm-8"  id="note-background">
 
-				<div class="headline">
-					<h4>{{ quake.quake_title }}</h4>
-				</div>
 
-				<div class="summary">
-					<p>A {{ quake.magnitude }} earthquake struck {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
-						{% if quake.depth <= 70 %}
-							<p>The shallow quake occurred {{ quake.depth }} kilometers below the ground.</p>
-							{% elif quake.depth > 300 %}
-							<p>The deep quake occurred {{ quake.depth }} kilometers below the earth's surface.</p>
-							{% else %}
-							<p>The quake happened {{ quake.depth }} kilometers below the ground.</p>
+				<div class="note">
+
+					{% if quake.seismictype == 'earthquake' %}
+						<div class="row">
+							<div class="header">
+								<img class="icon" src="/static/images/quake-icon.png"/>
+								<h3 class="type">EARTHQUAKE</h3>
+							</div>
+						</div>
+
+						<div class="headline">
+							<h4>{{ quake.quake_title }}</h4>
+						</div>
+
+						<div class="summary">
+							<p>A {{ quake.magnitude }} earthquake struck {{ quake.quake_datetime.strftime('%A') }}, {{ quake.quake_datetime.strftime('%b. %d') }} approximately {{ quake.place }}. The rumbling was detected at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
+								{% if quake.depth <= 70 %}
+									<p>The shallow quake occurred {{ quake.depth }} kilometers below the ground.</p>
+									{% elif quake.depth > 300 %}
+									<p>The deep quake occurred {{ quake.depth }} kilometers below the earth's surface.</p>
+									{% else %}
+									<p>The quake happened {{ quake.depth }} kilometers below the ground.</p>
+								{% endif %}
+
+							<div class="tsunami">
+								{% if quake.tsunami == 1 %}
+								<p>Due to the quake's magnitude and location, the USGS recommends being aware of the possibility of a tsunami. For the most recent information on tsunami watches and warnings, visit the <a href="http://www.tsunami.gov/">NOAA Tsunami Warning Center</a>.
+								{% endif %}
+							</div>
+
+							<div class="review_status">
+								{% if quake.status == 'automatic' %} 
+								<p>This note is based off of computer-generated data and has not yet been reviewed by a seismologist.</p>
+								{% else %}
+								<p>This note is based off of data that has been reviewed by a seismologist.</p>
+								{% endif %}
+								<p>For more information from the USGS, click <a href="{{ quake.url }}">here.</a></p>
+							</div> 
+						</div>
+
+					{% elif quake.seismictype == 'quarry' %}
+
+						<div class"header">
+							<img class="icon" src="/static/images/quake-icon.png"/>
+							<h3 class="type">QUARRY BLAST</h3>
+						</div>
+
+						<div class="headline">
+							<h4>{{ quake.quake_title }}</h4>
+						</div>
+
+						<div class="summary">
+							<p>A {{ quake.magnitude }} shake was felt {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
+								{% if quake.depth <= 70 %}
+									<p>The shallow shaking occurred {{ quake.depth }} kilometers below the ground.</p>
+								{% elif quake.depth > 300 %}
+									<p>The deep shaking occurred {{ quake.depth }} kilometers below the earth's surface.</p>
+								{% else %}
+								{% endif %}
+							<div class="review_status">
+								{% if quake.status == 'automatic' %} 
+								<p>This note is based off of computer-generated data and has not yet been reviewed by a seismologist.</p>
+								{% else %}
+								<p>This note is based off of data that has been reviewed by a seismologist.</p>
+								{% endif %}
+								</div>
+								<p>For more information from the USGS, click <a href="{{ quake.url }}">here.</a></p>
+							</div> 
+						
 						{% endif %}
 
-					<div class="tsunami">
-						{% if quake.tsunami == 1 %}
-						<p>Due to the quake's magnitude and location, the USGS recommends being aware of the possibility of a tsunami. For the most recent information on tsunami watches and warnings, visit the <a href="http://www.tsunami.gov/">NOAA Tsunami Warning Center</a>.
-						{% endif %}
+					<div class="post-time">
+						Note generated: {{ quake.recordtime.strftime('%b %d, %Y at %I:%M %p') }}.
 					</div>
 
-					<div class="review_status">
-						{% if quake.status == 'automatic' %} 
-						<p>This note is based off of computer-generated data and has not yet been reviewed by a seismologist.</p>
-						{% else %}
-						<p>This note is based off of data that has been reviewed by a seismologist.</p>
-						{% endif %}
-						<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
-					</div> 
-				</div>
-
-			{% elif quake.seismictype == 'quarry' %}
-
-				<div class"header">
-					<img class="icon" src="/static/images/quake-icon.png"/>
-					<h3 class="type">QUARRY BLAST</h3>
-				</div>
-
-				<div class="headline">
-					<h4>{{ quake.quake_title }}</h4>
-				</div>
-
-				<div class="summary">
-					<p>A {{ quake.magnitude }} shake was felt {{ quake.quake_datetime.strftime('%A') }} approximately {{ quake.place }}. The rumbling was felt at {{ quake.quake_datetime.strftime('%I:%M %p') }}.
-						{% if quake.depth <= 70 %}
-							<p>The shallow shaking occurred {{ quake.depth }} kilometers below the ground.</p>
-						{% elif quake.depth > 300 %}
-							<p>The deep shaking occurred {{ quake.depth }} kilometers below the earth's surface.</p>
-						{% else %}
-						{% endif %}
-					<div class="review_status">
-						{% if quake.status == 'automatic' %} 
-						<p>This note is based off of computer-generated data and has not yet been reviewed by a seismologist.</p>
-						{% else %}
-						<p>This note is based off of data that has been reviewed by a seismologist.</p>
-						{% endif %}
+					<div class="share">
+						<div class="row" id="share">
+						Share this update
 						</div>
-						<p>For more information from the USGS click <a href="{{ quake.url }}">here.</a></p>
-					</div> 
-				
-				{% endif %}
+						
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-3">Facebook</div>
+							<div class="col-sm-3">Twitter</div>
+							<div class="col-sm-3">Google+</div>
+							<div class="col-sm-2"></div>
+						</div>
 
-			<div class="post-time">
-				Note generated: {{ quake.recordtime.strftime('%b %d, %Y at %I:%M %p') }}.
+					</div>
+
+					<div class="attribution">
+						<em>Information provided by the USGS.</em>
+					</div>
+
+				</div>
+
 			</div>
 
-			<div class="share">
-				Share this update
-			</div>
+		<div class="col-sm-2"></div>
 
-			<div class="attribution">
-				<em>Information provided by the USGS.</em>
-			</div>
-
-		</div>
 	</div>
 
 	<!-- The quake map. -->
 
-	<div class="col-md-4">		
-		<div id="map_canvas"></div>
+	<div class="col-sm-4">		
+
+		<div class="col-sm-1"></div>
+
+			<div class="col-sm-10">
+
+				<div class="row">
+					<h3>Location</h3>
+				</div>
+
+				<div class="row">
+					<div id="map_canvas"></div>
+				</div>
+
+			</div>
+
+		<div class="col-sm-1"></div>
+
 	</div>
 
 	<!-- The quake  tweets. -->
 
-	<div class="col-md-4">
-		<div class="Tweetfeed">
+	<div class="col-sm-4">		
+
+		<div class="col-sm-2"></div>
+
+			<div class="col-sm-8">
+
+				<div class="Tweetfeed">
 		</div>
+
+		<div class="col-sm-2"></div>
+
 	</div>
 
 
