@@ -2,4 +2,4 @@ web: python note.py
 
 heroku ps:scale web=1
 
-web: gunicorn qj.wsgi
+web: gunicorn run:app
