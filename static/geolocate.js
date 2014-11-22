@@ -26,7 +26,7 @@ function showPosition(position) {
 $.ajax({
   type: "POST",
   url: "/location",
-  point: { latlon: "latlon" }
+  data: { latlon: "latlon" }
 });
 
 

@@ -17,7 +17,8 @@ def home_map():
 
 @app.route("/location", methods=['POST'])
 def user_location():
-	user_latlong = request.form.get(point)
+	user_latlong = request.form.get(data)
+	
 
 
 

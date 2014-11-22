@@ -3,29 +3,30 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../static/geolocate.js"></script>
-<script type="text/javascript">
-	var data = {{data}}
-	$(document).ready(function () {
-	              var latitude = parseFloat("51.515252");
-	              var longitude = parseFloat("-0.189852");
-	              var latlngPos = new google.maps.LatLng(latitude, longitude);
-	              // Set up options for the Google map
-	              var myOptions = {
-	              zoom: 10,
-	              center: latlngPos,
-	              mapTypeId: google.maps.MapTypeId.ROADMAP
-	              };
-	              // Define the map
-	              map = new google.maps.Map(document.getElementById("event-map"), myOptions);
-	              data.forEach(function(p) {
-	                  var point = new google.maps.LatLng(p.lat, p.lng);
-	                  var marker = new google.maps.Marker({position: point,
-	                                    map: map,
-	                                    title: p.name
-	                                    });
 
-	                     })
-	              });
+<script type="text/javascript">
+	// var data = {{data}}
+	// $(document).ready(function () {
+	//               var latitude = parseFloat("51.515252");
+	//               var longitude = parseFloat("-0.189852");
+	//               var latlngPos = new google.maps.LatLng(latitude, longitude);
+	//               // Set up options for the Google map
+	//               var myOptions = {
+	//               zoom: 10,
+	//               center: latlngPos,
+	//               mapTypeId: google.maps.MapTypeId.ROADMAP
+	//               };
+	//               // Define the map
+	//               map = new google.maps.Map(document.getElementById("event-map"), myOptions);
+	//               data.forEach(function(p) {
+	//                   var point = new google.maps.LatLng(p.lat, p.lng);
+	//                   var marker = new google.maps.Marker({position: point,
+	//                                     map: map,
+	//                                     title: p.name
+	//                                     });
+
+	//                      })
+	//               });
 </script>
 
 {% endblock %}
