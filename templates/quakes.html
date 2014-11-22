@@ -8,19 +8,26 @@
 {% endblock %}
 {% block body %}
 
+<div class="col-sm-5">
 
-<div class="quake-list">
+	<div class="quake-list">
 
-Quakes:
+		Quakes:
 
-{% for quake in quakes %}
-	
-	<p> <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </p>
+		{% for quake in quakes %}
+			
+		<p> <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a>  {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}  </p>
+			
+			
+		{% endfor %}
 
-{% endfor %}
+	</div>
 
+</div>
 
-<div class="quakes-canvas"
+<div class="col-sm-7">
+
+	<div class="quakes-canvas"></div>
 
 </div>
 

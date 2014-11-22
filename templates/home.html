@@ -1,10 +1,76 @@
 {% extends 'base.html' %}
+{% block head %}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../static/geolocate.js"></script>
+<script type="text/javascript">
+	var data = {{data}}
+	$(document).ready(function () {
+	              var latitude = parseFloat("51.515252");
+	              var longitude = parseFloat("-0.189852");
+	              var latlngPos = new google.maps.LatLng(latitude, longitude);
+	              // Set up options for the Google map
+	              var myOptions = {
+	              zoom: 10,
+	              center: latlngPos,
+	              mapTypeId: google.maps.MapTypeId.ROADMAP
+	              };
+	              // Define the map
+	              map = new google.maps.Map(document.getElementById("event-map"), myOptions);
+	              data.forEach(function(p) {
+	                  var point = new google.maps.LatLng(p.lat, p.lng);
+	                  var marker = new google.maps.Marker({position: point,
+	                                    map: map,
+	                                    title: p.name
+	                                    });
+
+	                     })
+	              });
+</script>
+
+{% endblock %}
+
 {% block body %}
 
-	<div class="body">
-		
-		
+<!-- Column with Event Listing -->
 
-	</div>
+<div class="col-sm-4" class="event-list">
+	
+	<div class="col-sm-1"></div>
+		<div class="col-sm-10" class="event-list" id="userpoint">
+			<div class="row">
+				<div id="recent-events">Recent Events</div>
+			</div>
+			<!-- <div class="row">
+				<button onClick="getRecent()" name"recentquake" class="btn btn-default" id="sort-button">Sort by Time</button>
+
+				<button onclick="getLocation()" name="userlocate" class="btn btn-default" id="distance-sort">Sort by Location</button>
+			</div> -->
+			
+			<div class="row">
+				
+				{% for quake in recent_quakes %}
+					<div class="quake-list">
+						<img class="small-icon" src="/static/images/quake-icon.png"/>
+						<div class="recent-title"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a></div>
+						<div class="recent-datetime">{{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
+					</div>
+				{% endfor %}
+
+			</div>
+
+			<!-- <div class="row">
+				<button onClick="/quakes" name"allquakes" class="btn btn-default">See All Events</button>
+			<div> -->
+
+		</div>
+	<div class="col-sm-1"></div>
+</div>
+
+<!-- Column with Map of All Events -->
+
+<div class="col-sm-8" class="event-map" id="all-map">
+
+</div>
 
 {% endblock %}
