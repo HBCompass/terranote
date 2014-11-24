@@ -2,7 +2,8 @@
 {% block head %}
 
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="../static/geolocate.js"></script>
 
 
 {% endblock %}
@@ -16,7 +17,10 @@
 
 		{% for quake in quakes %}
 			
-		<p> <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a>  {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}  </p>
+		<div class="quake-list">
+			<img class="small-icon" src="/static/images/quake-icon.png"/>
+			<div class="recent-title"> <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </div><div class="recent-datetime"> {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
+		</div>
 			
 			
 		{% endfor %}

@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, redirect
 from flask import session as user_session
 from model import Quake, session as db_session
 from quake import get_quake
+import json
 
 
 app = Flask(__name__)
@@ -18,12 +19,14 @@ def home_map():
 @app.route("/location", methods=['POST'])
 def user_location():
 	user_latlong = request.form.get(data)
-	
+	pass
 
 
 
 @app.route("/quakes")
 def quake_notes():
+	# data = Quake.query.order_by(Quake.quake_datetime.desc()).limit(25)
+	# mapdata = json.dumps(json_list = data.all())
 	quakes = Quake.query.order_by(Quake.quake_datetime.desc()).all()
 	return render_template("quakes.html", quakes=quakes)
 

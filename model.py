@@ -4,6 +4,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy import Column, Integer, String, DateTime, Float
 from sqlalchemy.orm import sessionmaker, relationship, backref, scoped_session
 from datetime import datetime
+from collections import OrderedDict
 
 engine = create_engine("sqlite:///terranote.db", echo=False)
 session = scoped_session(sessionmaker(bind=engine,
@@ -18,7 +19,6 @@ class Quake(Base):
     """ from quake.py """  
     __tablename__ = "quakes"
 
-    # id = Column(Integer, primary_key = True)
     quake_id = Column(String(50), primary_key = True)
     quake_title = Column(String, nullable = False)
     quake_type = Column(String(25), nullable = False)
@@ -34,6 +34,14 @@ class Quake(Base):
     felt = Column(Integer, nullable = True)
     tsunami = Column(Integer, nullable = True)
     recordtime = Column(DateTime, nullable = False)
+
+
+class DictSerializable(object):
+    def _asdict(self):
+        result = OrderedDict()
+        for key in self.__mapper__.c.keys():
+            result[key] = getattr(self, key)
+        return result
 
 ### End class declarations
 
