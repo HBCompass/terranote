@@ -1,5 +1,19 @@
 $(document).ready(function () {
     getLocation()
+
+    $("#test").click(function(){
+$.ajax({
+  type: "GET",
+  url: "/location",
+  data: { latlon: "latlon" }
+});
+
+
+
+        
+    })
+
+
 });
 
 
@@ -22,12 +36,6 @@ function showPosition(position) {
     // document.getElementById("all-map").innerHTML = "<img src='"+img_url+"'>";
     console.log(latlon)
 }
-
-$.ajax({
-  type: "POST",
-  url: "/location",
-  data: { latlon: "latlon" }
-});
 
 
 

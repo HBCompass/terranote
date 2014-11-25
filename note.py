@@ -3,6 +3,7 @@ from flask import session as user_session
 from model import Quake, session as db_session
 from quake import get_quake
 import json
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -16,19 +17,36 @@ def home_map():
 	return render_template("home.html", recent_quakes=recent_quakes)
 
 
-@app.route("/location", methods=['POST'])
+@app.route("/location")
 def user_location():
-	user_latlong = request.form.get(data)
-	pass
+	user_latlong = request.args.get("latlon")
+	print user_latlong
+	return "hi"
+
+
 
 
 
 @app.route("/quakes")
 def quake_notes():
-	# data = Quake.query.order_by(Quake.quake_datetime.desc()).limit(25)
-	# mapdata = json.dumps(json_list = data.all())
+	data = Quake.query.order_by(Quake.quake_datetime.desc()).limit(25)
+	#quakes_map = json.dumps(data.all())
+	cols = Quake.__table__.columns
+	print cols
+	json_compiled = {} 
+	for quake in data:
+		json_compiled[quake.quake_id] = {}
+		json_compiled[quake.quake_id]['lat'] = quake.latitude #getattr(thing, col) maybe
+		json_compiled[quake.quake_id]['lng'] = quake.longitude
+	#print json_compiled
+	# quake_points
 	quakes = Quake.query.order_by(Quake.quake_datetime.desc()).all()
-	return render_template("quakes.html", quakes=quakes)
+	return render_template("quakes.html", quakes=quakes, quake_points=json_compiled)
+
+
+
+
+
 
 
 @app.route("/quakes/<quake_id>")

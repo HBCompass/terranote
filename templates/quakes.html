@@ -5,6 +5,42 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="../static/geolocate.js"></script>
 
+<script type="text/javascript">
+
+	var locations = {{ quake_points|tojson|safe }}
+	console.log(locations)
+
+
+    var map = new google.maps.Map(document.getElementById('quakes-canvas'), {
+      zoom: 10,
+      center: new google.maps.LatLng(-33.92, 151.25),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+ 
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+
+
 
 {% endblock %}
 {% block body %}
@@ -12,7 +48,7 @@
 <div class="col-sm-5">
 
 	<div class="quake-list">
-
+<div id="test">Test test test</div>
 		Quakes:
 
 		{% for quake in quakes %}
@@ -32,6 +68,8 @@
 <div class="col-sm-7">
 
 	<div class="quakes-canvas"></div>
+
+	{{ quake_points }}
 
 </div>
 
