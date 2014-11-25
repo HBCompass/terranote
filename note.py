@@ -25,21 +25,17 @@ def user_location():
 
 
 
-
-
 @app.route("/quakes")
 def quake_notes():
 	data = Quake.query.order_by(Quake.quake_datetime.desc()).limit(25)
-	#quakes_map = json.dumps(data.all())
 	cols = Quake.__table__.columns
-	print cols
+	#print cols
 	json_compiled = {} 
 	for quake in data:
 		json_compiled[quake.quake_id] = {}
-		json_compiled[quake.quake_id]['lat'] = quake.latitude #getattr(thing, col) maybe
+		json_compiled[quake.quake_id]['lat'] = quake.latitude
 		json_compiled[quake.quake_id]['lng'] = quake.longitude
 	#print json_compiled
-	# quake_points
 	quakes = Quake.query.order_by(Quake.quake_datetime.desc()).all()
 	return render_template("quakes.html", quakes=quakes, quake_points=json_compiled)
 

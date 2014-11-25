@@ -30,8 +30,8 @@ body {
 }
 
 #quakes-canvas{
-	height: 400px;
-	width: 100%;
+	height: 720px;
+	width: 1040px;
 }
 
 .event-map{
