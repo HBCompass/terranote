@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, redirect
 from flask import session as user_session
-#from model import Quake, session as db_session
-#from quake import get_quake
+from model import Quake, session as db_session
+from quake import get_quake
 import json
 from flask import jsonify
 import os
@@ -67,6 +67,6 @@ def note():
 app.secret_key = "testing"
 
 if __name__=="__main__":
-	app.run( #debug=True,
+	app.run(debug=True,
 			host="0.0.0.0", 
 		    port=int(os.environ.get('PORT', 5000)))
