@@ -23,30 +23,35 @@
 		var map = new google.maps.Map(document.getElementById("quakes-canvas"), mapOptions);
 
 		var marker, i;
-		for (i = 0; i < locations.length; i++) {
-			var myLatlng = new google.maps.LatLng(locations[i]['lat'], locations[i]['lng']);
+
+		for (var key in locations) {
+			console.log("original locations", locations[key])
+			var myLatlng = new google.maps.LatLng(locations[key]['lng'],locations[key]['lat'])
+		 	console.log("mylatlong", myLatlng)
+
 			var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
 		});
+		}
+		
 		
 
 		(function(marker, data) {
 
 		// Attaching a click event to the current marker
-		google.maps.event.addListener(marker, "click", function(e) {
-			infoWindow.setContent(data.description);
-			infoWindow.open(map, marker);
-			});
-			})(marker, data);
-		}
+			google.maps.event.addListener(marker, "click", function(e) {
+				infoWindow.setContent(data.description);
+				infoWindow.open(map, marker);
+				});
+		})(marker, data);
+		//}
 		
-  	};
+  	};//close initialize
  
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-
 
 
 
@@ -76,6 +81,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="col-sm-8">
 
 	<div id="quakes-canvas"></div>
+
+	{{ quake_points }}
 
 </div>
 

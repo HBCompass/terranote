@@ -35,6 +35,7 @@ def quake_notes():
 		json_compiled[quake.quake_id] = {}
 		json_compiled[quake.quake_id]['lat'] = quake.latitude
 		json_compiled[quake.quake_id]['lng'] = quake.longitude
+		json_compiled[quake.quake_id]['title'] = quake.quake_title
 	#print json_compiled
 	quakes = Quake.query.order_by(Quake.quake_datetime.desc()).all()
 	return render_template("quakes.html", quakes=quakes, quake_points=json_compiled)
