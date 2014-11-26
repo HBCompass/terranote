@@ -1,5 +1,5 @@
 web: python note.py
 
-heroku ps:scale web=1
+# heroku ps:scale web=1
 
-web: gunicorn run:app
+# web: gunicorn run:app
