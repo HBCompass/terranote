@@ -11,7 +11,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_map():
-	return "hi"
 	topten = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
 	cols = Quake.__table__.columns
 	json_compiled = {} 
