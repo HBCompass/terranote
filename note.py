@@ -10,11 +10,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_map():
-	# get user location from session data
-	# user_location = request.args.get("userpoint")
-	# pass user location to home.html as userlat, userlng
+	topten = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
+	cols = Quake.__table__.columns
+	json_compiled = {} 
+	for quake in topten:
+		json_compiled[quake.quake_id] = {}
+		json_compiled[quake.quake_id]['lat'] = quake.latitude
+		json_compiled[quake.quake_id]['lng'] = quake.longitude
+		json_compiled[quake.quake_id]['title'] = quake.quake_title
+	print json_compiled
 	recent_quakes = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
-	return render_template("home.html", recent_quakes=recent_quakes)
+	return render_template("home.html", recent_quakes=recent_quakes, top_ten=json_compiled)
 
 
 @app.route("/location")
@@ -36,14 +42,10 @@ def quake_notes():
 		json_compiled[quake.quake_id]['lat'] = quake.latitude
 		json_compiled[quake.quake_id]['lng'] = quake.longitude
 		json_compiled[quake.quake_id]['title'] = quake.quake_title
+		json_compiled[quake.quake_id]['id'] = quake.quake_id
 	#print json_compiled
 	quakes = Quake.query.order_by(Quake.quake_datetime.desc()).all()
 	return render_template("quakes.html", quakes=quakes, quake_points=json_compiled)
-
-
-
-
-
 
 
 @app.route("/quakes/<quake_id>")

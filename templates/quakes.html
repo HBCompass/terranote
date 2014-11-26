@@ -25,24 +25,26 @@
 		var marker, i;
 
 		for (var key in locations) {
-			console.log("original locations", locations[key])
 			var myLatlng = new google.maps.LatLng(locations[key]['lng'],locations[key]['lat'])
-		 	console.log("mylatlong", myLatlng)
-
+			 	console.log("mylatlong:", myLatlng)
+			 var event_title = locations[key]['title']
+			 	console.log("event_title:",event_title)
+					 	
 			var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
+			title: event_title
 		});
 		}
 		
-		
-
 		(function(marker, data) {
+			for (var key in locations){
+				var event_id = locations[key]['id']
+			}
 
 		// Attaching a click event to the current marker
-			google.maps.event.addListener(marker, "click", function(e) {
-				infoWindow.setContent(data.description);
-				infoWindow.open(map, marker);
+			google.maps.event.addListener(marker, "click", function() {
+				window.location.href = '/quakes/event_id';
 				});
 		})(marker, data);
 		//}
@@ -61,7 +63,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="col-sm-4">
 
 	<div class="quake-list">
-<div id="test">Test test test</div>
+
 		Quakes:
 
 		{% for quake in quakes %}
@@ -81,8 +83,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <div class="col-sm-8">
 
 	<div id="quakes-canvas"></div>
-
-	{{ quake_points }}
 
 </div>
 
