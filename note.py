@@ -4,6 +4,7 @@ from model import Quake, session as db_session
 from quake import get_quake
 import json
 from flask import jsonify
+import os
 
 
 app = Flask(__name__)
