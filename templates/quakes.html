@@ -3,24 +3,24 @@
 
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</script>
 
 
 <script type="text/javascript">
 
 	function initialize() {
 
-		var locations = {{ quake_points|tojson|safe }}
-
-		console.log(locations)
-				
 		var mapOptions = {
 			center: new google.maps.LatLng(37, -122),
 			zoom: 2,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 
-		var infoWindow = new google.maps.InfoWindow();
 		var map = new google.maps.Map(document.getElementById("quakes-canvas"), mapOptions);
+
+		var locations = {{ quake_points|tojson|safe }}
+
+		console.log(locations)
 
 		var marker, i;
 
@@ -29,23 +29,30 @@
 			 	console.log("mylatlong:", myLatlng)
 			 var event_title = locations[key]['title']
 			 	console.log("event_title:",event_title)
+			 var event_id = locations[key]['id']
+			 	console.log("event_id:", event_id)
 					 	
 			var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: map,
-			title: event_title
-		});
+				position: myLatlng,
+				map: map,
+				title: event_title,
+			})
+			
+			// Attaching a click event to the current marker
+			google.maps.event.addDomListener(marker, "click", function(e) {
+			  window.location.href = '/quakes/' + event_id;
+			});
 		}
 		
+		// Creating a closure to retain the correct data 
+		// Pass the current data in the loop into the closure (marker, data)
 		(function(marker, data) {
-			for (var key in locations){
-				var event_id = locations[key]['id']
-			}
 
-		// Attaching a click event to the current marker
-			google.maps.event.addListener(marker, "click", function() {
-				window.location.href = '/quakes/event_id';
-				});
+		  // Attaching a click event to the current marker
+		  google.maps.event.addDomListener(marker, "click", function(e) {
+		    window.location.href = '/quakes/' + event_id;
+		  });
+
 		})(marker, data);
 		//}
 		

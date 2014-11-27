@@ -30,7 +30,7 @@ body {
 }
 
 #quakes-canvas{
-	height: 720px;
+	height: 725px;
 	width: 1040px;
 }
 
@@ -40,8 +40,8 @@ body {
 }
 
 #ten-map{
-	height:720px;
-	width:1040px;
+	height:725px;
+	width:1060px;
 }
 
 .header{
