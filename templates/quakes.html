@@ -17,6 +17,9 @@
 		};
 
 		var map = new google.maps.Map(document.getElementById("quakes-canvas"), mapOptions);
+		
+
+
 
 		var locations = {{ quake_points|tojson|safe }}
 
@@ -36,28 +39,17 @@
 				position: myLatlng,
 				map: map,
 				title: event_title,
+				url: event_id
+
 			})
-			
 			// Attaching a click event to the current marker
-			google.maps.event.addDomListener(marker, "click", function(e) {
-			  window.location.href = '/quakes/' + event_id;
+			google.maps.event.addDomListener(marker, "click", function(e) { debugger;
+			  window.location.href = '/quakes/' + this.url;
 			});
 		}
-		
-		// Creating a closure to retain the correct data 
-		// Pass the current data in the loop into the closure (marker, data)
-		(function(marker, data) {
-
-		  // Attaching a click event to the current marker
-		  google.maps.event.addDomListener(marker, "click", function(e) {
-		    window.location.href = '/quakes/' + event_id;
-		  });
-
-		})(marker, data);
-		//}
-		
-  	};//close initialize
- 
+	}
+			
+			 
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
