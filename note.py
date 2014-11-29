@@ -19,6 +19,7 @@ def home_map():
 		json_compiled[quake.quake_id]['lat'] = quake.latitude
 		json_compiled[quake.quake_id]['lng'] = quake.longitude
 		json_compiled[quake.quake_id]['title'] = quake.quake_title
+		json_compiled[quake.quake_id]['id'] = quake.quake_id
 	print json_compiled
 	recent_quakes = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
 	return render_template("home.html", recent_quakes=recent_quakes, top_ten=json_compiled)

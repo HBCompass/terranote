@@ -191,7 +191,7 @@
         // to the map type control.
         var mapOptions = {
             zoom: 2,
-            center: new google.maps.LatLng(41, 14),
+            center: new google.maps.LatLng(41, 15),
             zoomControl: false,
             panControl: false,
             streetViewControl: false,
@@ -213,28 +213,28 @@
 		console.log(locations)
 
 		// Attach markers to each location
-		var marker, i;
+        var marker, i;
 
-		for (var key in locations) {
-			var myLatlng = new google.maps.LatLng(locations[key]['lng'],locations[key]['lat'])
-			 	console.log("mylatlong:", myLatlng)
-			 var event_title = locations[key]['title']
-			 	console.log("event_title:",event_title)
-			 var event_id = locations[key]['id']
-			 	console.log("event_id:", event_id)
-					 	
-			var marker = new google.maps.Marker({
-				position: myLatlng,
-				map: map,
-				title: event_title,
-				url: event_id
+        for (var key in locations) {
+            var myLatlng = new google.maps.LatLng(locations[key]['lng'],locations[key]['lat'])
+                console.log("mylatlong:", myLatlng)
+             var event_title = locations[key]['title']
+                console.log("event_title:",event_title)
+             var event_id = locations[key]['id']
+                console.log("event_id:", event_id)
+                        
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: event_title,
+                url: event_id
 
-			})
-			// Attaching a click event to the current marker
-			google.maps.event.addDomListener(marker, "click", function(e) { debugger;
-			  window.location.href = '/quakes/' + this.url;
-			});
-		}
+            })
+            // Attaching a click event to the current marker
+            google.maps.event.addDomListener(marker, "click", function(e) { debugger;
+              window.location.href = '/quakes/' + this.url;
+            });
+        }
 	}
 			
 			 
