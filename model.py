@@ -43,19 +43,7 @@ class DictSerializable(object):
             result[key] = getattr(self, key)
         return result
 
-### End class declarations
-
-# def connect():
-#     global ENGINE
-#     global Session
-
-#     ENGINE = create_engine("sqlite:///terranote.db", echo=True)
-#     Session = sessionmaker(bind=ENGINE)
-
-#     return Session()
-
 def main():
-    """In case we need this for something"""
     pass
 
 if __name__ == "__main__":

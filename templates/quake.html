@@ -41,6 +41,7 @@
         
         var marker = new google.maps.Marker({
 	     	position: myLatlng,
+	     	title: "{{ quake.quake_title }}",
 	     	icon: getCircle({{ quake.magnitude }})
       	});
       	marker.setMap(map);
