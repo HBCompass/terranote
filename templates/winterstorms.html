@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+  function initialize() {
+
+  	var myLatlng = new google.maps.LatLng(55.4194, -161.8950)
+  	var mapCanvas = document.getElementById('winter-map');
+    var mapOptions = {
+      center: myLatlng,          
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var purple = "/static/images/purple-marker16.png"
+    var marker = new google.maps.Marker({
+     	position: myLatlng,
+     	icon: purple
+  	});
+  	marker.setMap(map);
+  }
+
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+{% endblock %}
+{% block body %}
+
+
+
+
+{% endblock %}

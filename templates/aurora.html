@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
 {% block body %}
 
 <div class="notepage">
 
 	<!-- The template for the aurora note. -->
 
-	<div class="col-sm-6" id="fire-background">
+	<div class="col-sm-6" id="aurora-background">
 
 		<div class="col-sm-1"></div>
 
@@ -16,12 +20,12 @@
 
 						<div class="row">
 							<div class="header">
-								<img class="icon" src="/static/images/fire-icon.png"/>
-								<h3 class="type">FIRE</h3>
+								<img class="icon" src="/static/images/aurora-icon.png"/>
+								<h3 class="type">AURORA</h3>
 							</div>
 						</div>
 
-						<div class="headline fire-red">
+						<div class="headline aurora-green">
 							<h3>Low | 2</h3>
 						</div>
 
@@ -72,7 +76,9 @@
 				</div>
 
 				<div class="row">
-					<div id="fire_map"></div>
+					<div id="aurora_map">
+						<img src="/static/images/aurora2.png">
+					</div>
 				</div>
 
 			</div>

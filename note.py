@@ -9,6 +9,10 @@ import os
 
 app = Flask(__name__)
 
+#-------------------------------
+# Home page
+#-------------------------------
+
 @app.route("/")
 def home_map():
 	topten = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
@@ -24,14 +28,9 @@ def home_map():
 	recent_quakes = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).limit(10)
 	return render_template("home.html", recent_quakes=recent_quakes, top_ten=json_compiled)
 
-
-@app.route("/location")
-def user_location():
-	user_latlong = request.args.get("latlon")
-	print user_latlong
-	return "hi"
-
-
+#-------------------------------
+# Earthquake routes
+#-------------------------------
 
 @app.route("/quakes")
 def quake_notes():
@@ -52,10 +51,78 @@ def quake_notes():
 
 @app.route("/quakes/<quake_id>")
 def quake_note(quake_id):
-	# quake = db_session.query(Quake).first()
-	# quake = db_session.query(Quake).filter_by(Quake.quake_id == quake_id)
 	quake = Quake.query.get(quake_id)
 	return render_template("quake.html", quake=quake)
+
+#-------------------------------
+# Aurora route
+#-------------------------------
+
+@app.route("/aurora")
+def aurora():
+	return render_template("aurora.html")
+
+#-------------------------------
+# Fire route
+#-------------------------------
+
+@app.route("/fires")
+def fires():
+	return render_template("fire.html")
+
+@app.route("/fires/<fire_id>")
+def fire():
+	return render_template("fire.html")
+	pass
+
+#-------------------------------
+# Volcano route
+#-------------------------------
+
+@app.route("/volcanoes")
+def volcanoes():
+	return render_template("volcano.html")
+
+@app.route("/volcanoes/<volcano_id>")
+def volcano():
+	return render_template("volcano.html")
+	pass
+
+#-------------------------------
+# Flood route
+#-------------------------------
+
+@app.route("/floods")
+def floods():
+	return render_template("flood.html")
+
+@app.route("/floods/<flood_id>")
+def flood():
+	return render_template("flood.html")
+	pass
+
+#-------------------------------
+# Winterstorm route
+#-------------------------------
+
+@app.route("/winterstorms")
+def winter():
+	return render_template("winterstorm.html")
+
+@app.route("/winterstorms/<winterstorm_id>")
+def winter():
+	return render_template("winterstorm.html")
+	pass	
+
+#-------------------------------
+# Testing and in-progress pages
+#-------------------------------
+
+@app.route("/location")
+def user_location():
+	user_latlong = request.args.get("latlon")
+	# print user_latlong
+	return "hi"
 
 @app.route("/note_example")
 def note():
@@ -63,6 +130,12 @@ def note():
 	quake = db_session.query(Quake).order_by(Quake.quake_datetime.desc()).first()
 	# pass dictionary k,v to jinja template
 	return render_template("quake.html", quake=quake)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return 'This page does not exist', 404
+
+
 
 app.secret_key = "testing"
 

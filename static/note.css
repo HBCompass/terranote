@@ -1,5 +1,5 @@
 /*Sitewide*/
-/*-------------------------*/
+/*--------------------------------*/
 
 body {
 	background-color: #04162b;
@@ -11,29 +11,44 @@ a {
   text-decoration: none;
  }
 
+ a:active {
+ 	color: inherit;
+ }
 
+/*--------------------------------*/
 /*Navigation*/
-/*-------------------------*/
+/*--------------------------------*/
 
 .navbar{
 	margin-bottom: 0px;
+}
+
+.navbar-right{
+	margin-top: 15px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
 }
 
 .navbar-inverse {
 	background-color: #000b17;
 }
 
-.navbar-inverse .navbar-brand {
-	color: #FFFFFF;
+.nav-link{
+	margin-left: 30px;
+	margin-right: 30px;
 }
 
+/*.navbar-inverse .navbar-brand {
+	color: #FFFFFF;
+}*/
+
+/*--------------------------------*/
 /*Homepage*/
-/*-------------------------*/
+/*--------------------------------*/
 
 .recent-title{
 	font-size: 14px;
 	text-decoration: none;
-	color: #f2a73c;
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
 }
@@ -55,8 +70,9 @@ a {
 	padding-bottom: 25px;
 }
 
+/*--------------------------------*/
 /*Summary Text*/
-/*-------------------------*/
+/*--------------------------------*/
 
 .header{
 	margin-bottom: 25px;
@@ -77,6 +93,9 @@ a {
 .headline{
 	margin-top: 20px;
 	margin-bottom: 25px;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
 }
 
 .summary{
@@ -116,9 +135,9 @@ a {
 	text-align: center;
 }
 
-
+/*--------------------------------*/
 /*Images and Icons*/
-/*-------------------------*/
+/*--------------------------------*/
 
 img.small-icon {
 	height: 15px;
@@ -134,8 +153,9 @@ img.icon{
 	float: left;
 }
 
+/*--------------------------------*/
 /*Maps*/
-/*-------------------------*/
+/*--------------------------------*/
 
 #quakes-canvas{
 	height: 725px;
@@ -157,8 +177,33 @@ img.icon{
 	width: 100%;
 }
 
-/*Earthquake Styles - Red*/
-/*-------------------------*/
+#volcano-map {
+	width: 762px;
+	height: 725px;
+}
+
+#fire-map {
+	width: 762px;
+	height: 725px;
+}
+
+#flood-map {
+	width: 762px;
+	height: 725px;
+}
+
+#winter-map {
+	width: 762px;
+	height: 725px;
+}
+
+/*-----------------------------------*/
+/*Earthquake Styles - Orange #fda204 */
+/*-----------------------------------*/
+
+.quake-orange {
+	color: #fda204;
+}
 
 .quake-list{
 	padding-left: 10px;
@@ -171,26 +216,87 @@ img.icon{
 
 #quake-background {
 	background-image: url("/static/images/quake-blur-sfw.jpg");
+	height: 725px;
 }
 
-/*Aurora Styles - Green*/
-/*-------------------------*/
+/*--------------------------------*/
+/*Aurora Styles - Green #00a651 */
+/*--------------------------------*/
+
+.aurora-green {
+	color: #00a651;
+}
+
+#aurora-background {
+	background-image: url("/static/images/aurora2-sfw.jpg");
+	height: 725px;
+}
+
+/*--------------------------------*/
+/*Volcano Styles - Yellow #fff568 */
+/*--------------------------------*/
+
+#volcano-background {
+	background-image: url("/static/images/volcano-blur-sfw.jpg");
+	height: 725px;
+}
+
+.volcano-yellow {
+	color: #fff568;
+}
+
+/*--------------------------------*/
+/*Fire Styles - Red #cd3202 */
+/*--------------------------------*/
+
+#fire-background {
+	background-image: url("/static/images/fire-blur-sfw.jpg");
+	height: 725px;
+}
+
+.fire-red {
+	color: #cd3202;
+}
 
 
-/*Volcano Styles - Yellow*/
-/*-------------------------*/
+/*--------------------------------*/
+/*Severe Weather - Blue #00aeef */
+/*--------------------------------*/
 
+#severe-background {
+	background-image: url("/static/images/lightning-blur-sfw.jpg");
+	height: 725px; 
+}
 
-/*Fire Styles - Orange*/
-/*-------------------------*/
+.weather-blue {
+	color: #00aeef;
+}
 
+/*--------------------------------*/
+/*Flood - Blue #00aeef */
+/*--------------------------------*/
 
-/*Severe Weather - Blue*/
-/*-------------------------*/
+#flood-background {
+	background-image: url("/static/images/flood-blur-sfw.jpg");
+	height: 725px;
+}
 
+/*--------------------------------*/
+/*Winter Weather - Purple #6b47a9 */
+/*--------------------------------*/
 
+#winter-background {
+	background-image: url("/static/images/winter-blur-sfw.jpg");
+	height: 725px;
+}
+
+.winter-purple {
+	color: #6b47a9;
+}
+
+/*--------------------------------*/
 /*Style for map marker*/
-/*-------------------------*/
+/*--------------------------------*/
 
 .pin {
   width: 30px;

@@ -222,12 +222,14 @@
                 console.log("event_title:",event_title)
              var event_id = locations[key]['id']
                 console.log("event_id:", event_id)
-                        
+              
+            var orange = '/static/images/orange-marker16.png';            
             var marker = new google.maps.Marker({
                 position: myLatlng,
                 map: map,
                 title: event_title,
-                url: event_id
+                url: event_id,
+                icon: orange
 
             })
             // Attaching a click event to the current marker
@@ -266,7 +268,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 				{% for quake in recent_quakes %}
 					<div class="quake-list">
 						<img class="small-icon" src="/static/images/quake-icon.png"/>
-						<div class="recent-title"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a></div>
+						<div class="recent-title quake-orange"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a></div>
 						<div class="recent-datetime">{{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
 					</div>
 				{% endfor %}

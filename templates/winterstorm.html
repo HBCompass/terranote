@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+  function initialize() {
+
+  	var myLatlng = new google.maps.LatLng(55.4194, -161.8950)
+  	var mapCanvas = document.getElementById('winter-map');
+    var mapOptions = {
+      center: myLatlng,          
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
+
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var purple = "/static/images/purple-marker16.png"
+    var marker = new google.maps.Marker({
+     	position: myLatlng,
+     	icon: purple
+  	});
+  	marker.setMap(map);
+  }
+
+
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+{% endblock %}
+{% block body %}
+
+<div class="notepage">
+
+	<!-- The template for the aurora note. -->
+
+	<div class="col-sm-6" id="winter-background">
+
+		<div class="col-sm-1"></div>
+
+			<div class="col-sm-10"  id="note-background">
+
+
+				<div class="note">
+
+						<div class="row">
+							<div class="header">
+								<img class="icon" src="/static/images/fire-icon.png"/>
+								<h3 class="type">WINTER STORM</h3>
+							</div>
+						</div>
+
+						<div class="headline winter-purple">
+							<h3>Pavlof: Advisory Alert</h3>
+						</div>
+
+						<div class="summary">
+							<p>Seismicity at the volcano has remained at low levels over the past 24 hours. Faint thermal features at the summit have been observed in satellite data and are consistent with cooling lava emplaced a few weeks ago. Pauses in vigorous eruptive activity of days to weeks are common during eruptive episodes of Pavlof Volcano, and a return to more robust eruptive activity remains possible and could occur with little or no warning.</p>
+						</div>
+			
+					<div class="post-time">
+						Note generated: Dec. 3, 2014 at 9:00 AM
+					</div>
+
+					<div class="share">
+						<div class="row" id="share">
+						Share this update
+						</div>
+						
+						<div class="row">
+							<div class="col-sm-1"></div>
+							<div class="col-sm-3">Facebook</div>
+							<div class="col-sm-3">Twitter</div>
+							<div class="col-sm-3">Google+</div>
+							<div class="col-sm-2"></div>
+						</div>
+
+					</div>
+
+					<div class="attribution">
+						<em>Information provided by the National Weather Service.</em>
+					</div>
+
+				</div>
+
+			</div>
+
+		<div class="col-sm-1"></div>
+
+	</div>
+
+	<!-- The aurora map. -->
+
+	<div class="col-sm-6">		
+
+		<!-- <div class="col-sm-1"></div> -->
+
+			<div class="col-sm-12">
+
+				<div class="row">
+				</div>
+
+				<div class="row">
+					<div id="winter-map"></div>
+				</div>
+
+			</div>
+
+		<!-- <div class="col-sm-1"></div> -->
+
+	</div>
+
+</div>
+
+
+{% endblock %}

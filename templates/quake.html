@@ -9,7 +9,7 @@
       	var mapCanvas = document.getElementById('map_canvas');
         var mapOptions = {
           center: myLatlng,          
-          zoom: 3,
+          zoom: 6,
           mapTypeId: google.maps.MapTypeId.TERRAIN
         };
         var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -42,11 +42,11 @@
 
 	<!-- The template for the quake note. -->
 
-	<div class="col-sm-4" id="quake-background">
+	<div class="col-sm-6" id="quake-background">
 
-		<div class="col-sm-2"></div>
+		<div class="col-sm-1"></div>
 
-			<div class="col-sm-8"  id="note-background">
+			<div class="col-sm-10"  id="note-background">
 
 
 				<div class="note">
@@ -59,7 +59,7 @@
 							</div>
 						</div>
 
-						<div class="headline">
+						<div class="headline quake-orange">
 							<h4>{{ quake.quake_title }}</h4>
 						</div>
 
@@ -96,7 +96,7 @@
 							<h3 class="type">QUARRY BLAST</h3>
 						</div>
 
-						<div class="headline">
+						<div class="headline quake-orange">
 							<h4>{{ quake.quake_title }}</h4>
 						</div>
 
@@ -147,20 +147,19 @@
 
 			</div>
 
-		<div class="col-sm-2"></div>
+		<div class="col-sm-1"></div>
 
 	</div>
 
 	<!-- The quake map. -->
 
-	<div class="col-sm-4">		
+	<div class="col-sm-6">		
 
-		<div class="col-sm-1"></div>
+		<!-- <div class="col-sm-1"></div> -->
 
-			<div class="col-sm-10">
+			<div class="col-sm-12">
 
 				<div class="row">
-					<h3>Location</h3>
 				</div>
 
 				<div class="row">
@@ -169,13 +168,13 @@
 
 			</div>
 
-		<div class="col-sm-1"></div>
+		<!-- <div class="col-sm-1"></div> -->
 
 	</div>
 
 	<!-- The quake  tweets. -->
 
-	<div class="col-sm-4">		
+<!-- 	<div class="col-sm-4">		
 
 		<div class="col-sm-2"></div>
 
@@ -186,7 +185,7 @@
 
 		<div class="col-sm-2"></div>
 
-	</div>
+	</div> -->
 
 
 </div>
