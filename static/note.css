@@ -1,3 +1,4 @@
+/*--------------------------------*/
 /*Sitewide*/
 /*--------------------------------*/
 
@@ -14,6 +15,16 @@ a {
  a:active {
  	color: inherit;
  }
+
+.terra {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+}
+
+.note {
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+}
 
 /*--------------------------------*/
 /*Navigation*/
