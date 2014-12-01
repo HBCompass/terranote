@@ -248,7 +248,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 {% block body %}
 
-<!-- Column with Event Listing -->
+<!-- Event Listings -->
 
 <div class="col-sm-4" class="event-list">
 	
@@ -257,12 +257,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<div class="row">
 				<div id="recent-events">Recent Events</div>
 			</div>
-			<!-- <div class="row">
-				<button onClick="getRecent()" name"recentquake" class="btn btn-default" id="sort-button">Sort by Time</button>
-
-				<button onclick="getLocation()" name="userlocate" class="btn btn-default" id="distance-sort">Sort by Location</button>
-			</div> -->
-			
+						
 			<div class="row">
 				
 				{% for quake in recent_quakes %}
@@ -275,15 +270,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 			</div>
 
-			<!-- <div class="row">
-				<button onClick="/quakes" name"allquakes" class="btn btn-default">See All Events</button>
-			<div> -->
-
+			
 		</div>
 	<div class="col-sm-1"></div>
 </div>
 
-<!-- Column with Map of 10 Most Recent Events -->
+<!-- Map of 10 Most Recent Events -->
 
     <div class="col-sm-8">
 

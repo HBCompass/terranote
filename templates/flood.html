@@ -201,7 +201,7 @@
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
         };
-        var map = new google.maps.Map(document.getElementById('flood-map'),
+        var map = new google.maps.Map(document.getElementById('single-map'),
             mapOptions);
 
         //Associate the styled map with the MapTypeId and set it to display.
@@ -292,7 +292,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 		<div class="row">
 
-			<div id="flood-map"></div>
+			<div id="single-map"></div>
 				
 		</div>
 

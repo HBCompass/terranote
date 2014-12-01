@@ -15,13 +15,6 @@ a {
  	color: inherit;
  }
 
-.paddingless {
-	padding-left: 0px !important;
-	padding-right: 0px !important;
-	
-}
-
-
 /*--------------------------------*/
 /*Navigation*/
 /*--------------------------------*/
@@ -172,32 +165,7 @@ img.icon{
 	width:1050px;
 }
 
-#quakes-map{
-	width: 100%;
-	height: 727px;
-}
-
-#quake-map {
-	width: 100%;
-	height: 727px;
-}
-
-#volcano-map {
-	width: 100%;
-	height: 721px;
-}
-
-#fire-map {
-	width: 100%;
-	height: 727px;
-}
-
-#flood-map {
-	width: 100%;
-	height: 727px;
-}
-
-#winter-map {
+#single-map {
 	width: 100%;
 	height: 727px;
 }
@@ -216,10 +184,6 @@ img.icon{
 /*Earthquake Styles - Orange #fda204 */
 /*-----------------------------------*/
 
-.quake-orange {
-	color: #fda204;
-}
-
 .quake-list{
 	padding-left: 10px;
 	padding-bottom: 10px;
@@ -234,17 +198,21 @@ img.icon{
 	height: 727px;
 }
 
+.quake-orange {
+	color: #fda204;
+}
+
 /*--------------------------------*/
 /*Aurora Styles - Green #00a651 */
 /*--------------------------------*/
 
-.aurora-green {
-	color: #00a651;
-}
-
 #aurora-background {
 	background-image: url("/static/images/aurora2-sfw.jpg");
 	height: 727px;
+}
+
+.aurora-green {
+	color: #00a651;
 }
 
 /*--------------------------------*/

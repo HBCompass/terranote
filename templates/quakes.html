@@ -201,7 +201,7 @@
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
         };
-        var map = new google.maps.Map(document.getElementById('quakes-map'),
+        var map = new google.maps.Map(document.getElementById('single-map'),
             mapOptions);
 
         //Associate the styled map with the MapTypeId and set it to display.
@@ -247,35 +247,37 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
 
-
-
 {% endblock %}
 {% block body %}
 
-<div class="col-sm-4">
+<!-- The list of earthquakes -->
 
-	<div class="quake-list">
+    <div class="col-sm-4">
 
-		<div id="recent-events">Quakes</div>
+    	<div class="quake-list">
 
-		{% for quake in quakes %}
-			
-		<div class="quake-list">
-			<img class="small-icon" src="/static/images/quake-icon.png"/>
-			<div class="recent-title quake-orange"> > <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </div><div class="recent-datetime"> {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
-		</div>
-			
-			
-		{% endfor %}
+    		<div id="recent-events">Quakes</div>
 
-	</div>
+    		{% for quake in quakes %}
+    			
+    		<div class="quake-list">
+    			<img class="small-icon" src="/static/images/quake-icon.png"/>
+    			<div class="recent-title quake-orange"> > <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </div><div class="recent-datetime"> {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
+    		</div>
+    			
+    			
+    		{% endfor %}
 
-</div>
+    	</div>
 
-<div class="col-sm-8">
+    </div>
 
-	<div id="quakes-map"></div>
+<!-- The quakes map -->
 
-</div>
+    <div class="col-sm-8">
+
+    	<div id="single-map"></div>
+
+    </div>
 
 {% endblock %}

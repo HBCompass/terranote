@@ -202,7 +202,7 @@
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
         };
-        var map = new google.maps.Map(document.getElementById('fire-map'),
+        var map = new google.maps.Map(document.getElementById('single-map'),
             mapOptions);
 
         //Associate the styled map with the MapTypeId and set it to display.
@@ -232,14 +232,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <div class="notepage">
 
-	<!-- The template for the aurora note. -->
+	<!-- The template for the fire note. -->
 
 	<div class="col-sm-6" id="fire-background">
 
 		<div class="col-sm-1"></div>
 
 			<div class="col-sm-10"  id="note-background">
-
 
 				<div class="note">
 
@@ -295,13 +294,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 		<div class="row">
 
-			<div id="fire-map"></div>
+			<div id="single-map"></div>
 				
 		</div>
 
 	</div>
 
 </div>
-
 
 {% endblock %}

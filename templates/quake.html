@@ -6,7 +6,7 @@
     <script>
       function initialize() {
 
-      	var styles = [
+    	var styles = [
         { 
             "featureType": "water",
             "elementType": "geometry.fill",
@@ -185,11 +185,9 @@
         var styledMap = new google.maps.StyledMapType(styles,
             {name: "Styled Map"});
 
-
-
         var myLatlng = new google.maps.LatLng({{ quake.longitude }}, {{ quake.latitude }})
 
-      	var mapCanvas = document.getElementById('quake-map');
+      	var mapCanvas = document.getElementById('single-map');
 
 		// Create a map object, and include the MapTypeId to add
         // to the map type control.
@@ -219,10 +217,11 @@
       	marker.setMap(map);
       }
 
+      //Display circle marker reflecting magnitude of quake
       function getCircle(magnitude) {
   		return {
 		    path: google.maps.SymbolPath.CIRCLE,
-		    fillColor: 'red',
+		    fillColor: 'orange',
 		    fillOpacity: .5,
 		    scale: Math.pow(2, magnitude) / Math.PI,
 		    strokeColor: 'white',
@@ -245,7 +244,6 @@
 		<div class="col-sm-1"></div>
 
 			<div class="col-sm-10"  id="note-background">
-
 
 				<div class="note">
 
@@ -287,7 +285,7 @@
 							</div> 
 						</div>
 
-					{% elif quake.seismictype == 'quarry' %}
+                    {% elif quake.seismictype == 'quarry' %}
 
 						<div class"header">
 							<img class="icon" src="/static/images/quake-icon.png"/>
@@ -329,10 +327,10 @@
 						
 						<div class="row">
 							<div class="col-sm-1"></div>
-							<div class="col-sm-3">Facebook</div>
-							<div class="col-sm-3">Twitter</div>
-							<div class="col-sm-3">Google+</div>
-							<div class="col-sm-2"></div>
+                            <div class="col-sm-3"><a href="">Facebook</a></div>
+                            <div class="col-sm-3"><a href="">Twitter</a></div>
+                            <div class="col-sm-3"><a href="">Google+</a></div>
+                            <div class="col-sm-2"></div>
 						</div>
 
 					</div>
@@ -354,14 +352,11 @@
 	<div class="col-sm-6">		
 
 			<div class="row">
-				<div id="quake-map"></div>
+				<div id="single-map"></div>
 			</div>
 
 	</div>
 
-	
 </div>
-
-
 
 {% endblock %}
