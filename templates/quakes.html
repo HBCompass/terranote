@@ -201,7 +201,7 @@
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
         };
-        var map = new google.maps.Map(document.getElementById('quakes-canvas'),
+        var map = new google.maps.Map(document.getElementById('quakes-map'),
             mapOptions);
 
         //Associate the styled map with the MapTypeId and set it to display.
@@ -256,7 +256,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 	<div class="quake-list">
 
-		Quakes:
+		<div id="recent-events">Quakes</div>
 
 		{% for quake in quakes %}
 			
@@ -274,7 +274,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <div class="col-sm-8">
 
-	<div id="quakes-canvas"></div>
+	<div id="quakes-map"></div>
 
 </div>
 

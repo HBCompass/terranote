@@ -5,14 +5,212 @@
 
     <script>
       function initialize() {
-      	var myLatlng = new google.maps.LatLng({{ quake.longitude }}, {{ quake.latitude }})
-      	var mapCanvas = document.getElementById('map_canvas');
+
+      	var styles = [
+        { 
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [ 
+                { 
+                    "color": "#04162b"
+                }
+            ] 
+        },
+        { 
+            "featureType": "water",
+            "elementType": "labels.text.fill",
+            "stylers": [ 
+        { 
+                "visibility": "simplified"
+        }, 
+        { 
+                "color": "#cccccc"
+        }
+            ]
+        },
+        { 
+            "featureType": "water",
+            "elementType": "labels.icon",
+            "stylers": [
+                { 
+                "visibility": "simplified"
+                },
+                { 
+                "color": "#FFFFFF"
+                }
+            ]
+        },
+        { 
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#808080"
+                }
+            ]
+        },
+        {
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry.fill",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {   
+            "featureType": "administrative",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "color": "#808080"
+                },
+                {   
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.man_made",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {   
+            "featureType": "poi.business",
+            "stylers": [
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "poi.attraction",
+            "stylers": [ 
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape",
+            "stylers": [
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "poi",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.province",
+            "stylers": [ 
+                {
+                    "visibility": "on"
+                },
+                {   
+                    "color": "#282828" 
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.province",
+            "elementType": "labels.text.fill",
+            "stylers": [ 
+                {
+                    "visibility": "off"
+                }, 
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "stylers": [ 
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.country",
+            "elementType": "geometry.stroke",
+            "stylers": [ 
+                {
+                    "color": "#0a4e6f"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.country",
+            "stylers": [ 
+                {
+                    "color": "#0a4e6f"
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.country",
+            "elementType": "geometry.fill"
+        }
+            ]
+
+        // Create a new StyledMapType object, passing it the array of styles,
+        // as well as the name to be displayed on the map type control.
+        var styledMap = new google.maps.StyledMapType(styles,
+            {name: "Styled Map"});
+
+
+
+        var myLatlng = new google.maps.LatLng({{ quake.longitude }}, {{ quake.latitude }})
+
+      	var mapCanvas = document.getElementById('quake-map');
+
+		// Create a map object, and include the MapTypeId to add
+        // to the map type control.
+
         var mapOptions = {
-          center: myLatlng,          
-          zoom: 6,
-          mapTypeId: google.maps.MapTypeId.TERRAIN
+		    center: myLatlng,          
+		    zoom: 4,
+		    zoomControl: false,
+		    panControl: false,
+		    streetViewControl: false,
+		    // mapTypeId: google.maps.MapTypeId.TERRAIN,
+		    mapTypeControlOptions: {
+		        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+		    }
         };
+
         var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
         
         var marker = new google.maps.Marker({
 	     	position: myLatlng,
@@ -155,39 +353,13 @@
 
 	<div class="col-sm-6">		
 
-		<!-- <div class="col-sm-1"></div> -->
-
-			<div class="col-sm-12">
-
-				<div class="row">
-				</div>
-
-				<div class="row">
-					<div id="map_canvas"></div>
-				</div>
-
+			<div class="row">
+				<div id="quake-map"></div>
 			</div>
-
-		<!-- <div class="col-sm-1"></div> -->
 
 	</div>
 
-	<!-- The quake  tweets. -->
-
-<!-- 	<div class="col-sm-4">		
-
-		<div class="col-sm-2"></div>
-
-			<div class="col-sm-8">
-
-				<div class="Tweetfeed">
-		</div>
-
-		<div class="col-sm-2"></div>
-
-	</div> -->
-
-
+	
 </div>
 
 

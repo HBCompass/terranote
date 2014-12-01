@@ -1,4 +1,233 @@
 {% extends 'base.html' %}
+
+{% block head %}
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</script>
+
+
+<script type="text/javascript">
+
+	function initialize() {
+
+		var styles = [
+        { 
+            "featureType": "water",
+            "elementType": "geometry.fill",
+            "stylers": [ 
+                { 
+                    "color": "#04162b"
+                }
+            ] 
+        },
+        { 
+            "featureType": "water",
+            "elementType": "labels.text.fill",
+            "stylers": [ 
+        { 
+                "visibility": "simplified"
+        }, 
+        { 
+                "color": "#cccccc"
+        }
+            ]
+        },
+        { 
+            "featureType": "water",
+            "elementType": "labels.icon",
+            "stylers": [
+                { 
+                "visibility": "simplified"
+                },
+                { 
+                "color": "#FFFFFF"
+                }
+            ]
+        },
+        { 
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#808080"
+                }
+            ]
+        },
+        {
+            "elementType": "labels.icon",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.natural.landcover",
+            "elementType": "geometry.fill",
+            "stylers": [
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.natural.terrain",
+            "elementType": "geometry.fill",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {   
+            "featureType": "administrative",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "color": "#808080"
+                },
+                {   
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape.man_made",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {   
+            "featureType": "poi.business",
+            "stylers": [
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "poi.attraction",
+            "stylers": [ 
+                { 
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "landscape",
+            "stylers": [
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        { 
+            "featureType": "poi",
+            "stylers": [ 
+                {
+                    "color": "#000b17"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.province",
+            "stylers": [ 
+                {
+                    "visibility": "on"
+                },
+                {   
+                    "color": "#282828" 
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.province",
+            "elementType": "labels.text.fill",
+            "stylers": [ 
+                {
+                    "visibility": "off"
+                }, 
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "stylers": [ 
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.country",
+            "elementType": "geometry.stroke",
+            "stylers": [ 
+                {
+                    "color": "#0a4e6f"
+                }
+            ]
+        },
+        {
+            "featureType": "administrative.country",
+            "stylers": [ 
+                {
+                    "color": "#0a4e6f"
+                }
+            ]
+        },
+        { 
+            "featureType": "administrative.country",
+            "elementType": "geometry.fill"
+        }
+            ]
+        
+        // Create a new StyledMapType object, passing it the array of styles,
+        // as well as the name to be displayed on the map type control.
+        var styledMap = new google.maps.StyledMapType(styles,
+            {name: "Styled Map"});
+
+        // Create a map object, and include the MapTypeId to add
+        // to the map type control.
+        var mapOptions = {
+            zoom: 5,
+            center: new google.maps.LatLng(42.951, -114.255),
+            zoomControl: false,
+            panControl: false,
+            streetViewControl: false,
+            mapTypeControlOptions: {
+              mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+        };
+        var map = new google.maps.Map(document.getElementById('fire-map'),
+            mapOptions);
+
+        //Associate the styled map with the MapTypeId and set it to display.
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+        
+		var myLatlng = new google.maps.LatLng(42.951, -114.255)
+			
+        var red = '/static/images/red-marker16.png';		 
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			map: map,
+			icon: red
+		})
+	}
+			
+			 
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
+
+{% endblock %}
+
+
 {% block body %}
 
 <div class="notepage">
@@ -22,11 +251,11 @@
 						</div>
 
 						<div class="headline fire-red">
-							<h3>Low | 2</h3>
+							<h3>Dietrich Butte Fire</h3>
 						</div>
 
 						<div class="summary">
-							<p>Auroral activity will be low. Weather permitting, low-level displays will be visible overhead in Barrow, Alaska, Tromsø, Norway and Tiksi, Russia, and visible low on the northern horizon from as far south as Winnipeg, Canada, Trondheim, Norway, and Igarka, Russia.</p>
+							<p>The Dietrich Butte Fire was ignited on Friday, June 27 by unknown causes. Approximately 3.5 miles north of Dietrich, Idaho, the fire consumed 3,195 acres of grass and brush. Forty personnel from Twin Falls Bureau of Land Management worked on containing the fire.</p>
 						</div>
 			
 					<div class="post-time">
@@ -40,16 +269,16 @@
 						
 						<div class="row">
 							<div class="col-sm-1"></div>
-							<div class="col-sm-3">Facebook</div>
-							<div class="col-sm-3">Twitter</div>
-							<div class="col-sm-3">Google+</div>
+							<div class="col-sm-3"><a href="">Facebook</a></div>
+							<div class="col-sm-3"><a href="">Twitter</a></div>
+							<div class="col-sm-3"><a href="">Google+</a></div>
 							<div class="col-sm-2"></div>
 						</div>
 
 					</div>
 
 					<div class="attribution">
-						<em>Information provided by the University of Alaska Fairbanks Geophysical Institute.</em>
+						<em>Information provided by <a href="http://inciweb.nwcg.gov/incident/3913/">Inciweb</a>.</em>
 					</div>
 
 				</div>
@@ -60,24 +289,15 @@
 
 	</div>
 
-	<!-- The aurora map. -->
+	<!-- The fire map. -->
 
 	<div class="col-sm-6">		
 
-		<!-- <div class="col-sm-1"></div> -->
+		<div class="row">
 
-			<div class="col-sm-12">
-
-				<div class="row">
-				</div>
-
-				<div class="row">
-					<div id="fire_map"></div>
-				</div>
-
-			</div>
-
-		<!-- <div class="col-sm-1"></div> -->
+			<div id="fire-map"></div>
+				
+		</div>
 
 	</div>
 
