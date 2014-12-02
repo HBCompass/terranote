@@ -48,7 +48,7 @@ sqlite> .schema
 ```xml
 python quake.py
 ```
--Run the app by starting the flask server:
+- Run the app by starting the flask server:
 ```xml
 python note.py
 ```
