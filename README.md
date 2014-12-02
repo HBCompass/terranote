@@ -7,7 +7,7 @@ TerraNote meets the need for real-time information during natural disasters and 
 
 ##Technology Stack##
 
-TerraNote is a flask app connected to a sqlite database and uses SQLAlchemy as the ORM. Pages are controlled by Jinja2 Templates with a Bootstrap framework. The current version uses the [geoJSON](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) api from the United States Geological Survery and the Google Maps Javascript API v3. 
+TerraNote is a flask app connected to a sqlite database and uses SQLAlchemy as the ORM. Pages are controlled by Jinja2 templates with a Bootstrap framework. The current version uses the [geoJSON](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) api from the United States Geological Survery and the Google Maps Javascript API v3. 
 
 ###File Guide###
 
@@ -19,32 +19,36 @@ TerraNote is a flask app connected to a sqlite database and uses SQLAlchemy as t
 
 ###Installation###
 
-1. Clone the repo
-2. Set up a virtual environment
-3. Pip install -r requirements.txt
-4. At the command line: 
+- Clone the repo
+- Set up a virtual environment
+- Pip install -r requirements.txt
+- At the command line: 
 
 ```xml
 python -i model.py
 ```
-then:
+Then:
 
 ```xml
 engine = create_engine("sqlite:///terranote.db", echo=True)
 ```
-and then: 
+Then: 
 
 ```xml
 Base.metadata.create_all(engine)
 ```
-5. In a new shell use ls command in project folder and verify *terranote.db* exists
-6. To see the structure of the database go to the command line:
+- In a new shell use ls command in project folder and verify *terranote.db* exists
+- To see the structure of the database go to the command line:
 ```xml
-sqlite3 terranote.db;
+sqlite3 terranote.db
 sqlite> .tables
 sqlite> .schema
 ```
-7. To add quakes to the database, quit sqllite and run quake.py
+- To add quakes to the database, quit SQLlite and run quake.py
 ```xml
 python quake.py
+```
+-Run the app by starting the flask server:
+```xml
+python note.py
 ```
