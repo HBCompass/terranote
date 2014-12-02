@@ -58,14 +58,14 @@ python note.py
 #####All Quakes#####
 ![earthquakes screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_earthquakes.PNG)
 #####Single Quake Note#####
-![single quake event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_quake_summary.PNG)
+![single quake event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_quake-summary.PNG)
 #####Single Fire Note#####
-![single fire event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_fire_summary.PNG)
+![single fire event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_fire-summary.PNG)
 #####Single Volcano Note#####
-![single volcano event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_volcano_summary.PNG)
+![single volcano event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_volcano-summary.PNG)
 #####Single Flood Note#####
-![single flood event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_flood_summary.PNG)
+![single flood event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_flood-summary.PNG)
 #####Single Winter Storm  Note#####
-![single storm event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_winter_summary.PNG)
+![single storm event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_winter-summary.PNG)
 #####Aurora Forecast#####
-![aurora forecast screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_aurora_summary.PNG)
+![aurora forecast screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_aurora-summary.PNG)
