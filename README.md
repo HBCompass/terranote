@@ -11,9 +11,9 @@ TerraNote is a flask app connected to a sqlite database and uses SQLAlchemy as t
 
 ###File Guide###
 
--model.py : Creates the database
--quake.py : Gets the feed from the USGS
--note.py : Controls the flask app
+- model.py : Creates the database
+- quake.py : Gets the feed from the USGS
+- note.py : Controls the flask app
 
 *There are additional files in the repo for features in progress, but this list covers the ones you need to recreate the project as depicted in the screenshots.*
 
@@ -52,3 +52,20 @@ python quake.py
 ```xml
 python note.py
 ```
+
+####Event Pages####
+
+#####All Quakes#####
+![earthquakes screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_earthquakes.PNG)
+#####Single Quake Note#####
+![single quake event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_quake_summary.PNG)
+#####Single Fire Note#####
+![single fire event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_fire_summary.PNG)
+#####Single Volcano Note#####
+![single volcano event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_volcano_summary.PNG)
+#####Single Flood Note#####
+![single flood event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_flood_summary.PNG)
+#####Single Winter Storm  Note#####
+![single storm event screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_winter_summary.PNG)
+#####Aurora Forecast#####
+![aurora forecast screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_aurora_summary.PNG)
