@@ -53,7 +53,13 @@ python quake.py
 python note.py
 ```
 
-####Event Pages####
+###Notes###
+
+Currently, the earthquake maps and pages are fed by a live data stream from the USGS.The next steps will include creating the same data pipeline for the other event types which are currently mocked up with static data.
+
+Expansion features will include user logins, location saving, event alerts and calculating the distance between the user and events.
+
+####Additional Screenshots | Single Event Pages####
 
 #####All Quakes#####
 ![earthquakes screenshot](https://raw.githubusercontent.com/HBCompass/terranote/master/screenshots/TerraNote_earthquakes.PNG)
