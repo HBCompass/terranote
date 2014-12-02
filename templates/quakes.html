@@ -81,21 +81,22 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     <div class="col-sm-4">
 
-    	<div class="quake-list">
+    	<div class="row">
+            <div id="recent-events">Quakes</div>
+        </div>
 
-    		<div id="recent-events">Quakes</div>
-
-    		{% for quake in quakes %}
+    	<div class="row">	
+            {% for quake in quakes %}
     			
     		<div class="quake-list">
     			<img class="small-icon" src="/static/images/quake-icon.png"/>
-    			<div class="recent-title quake-orange"> > <a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </div><div class="recent-datetime"> {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
+    			<div class="recent-title quake-orange"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a> </div><div class="recent-datetime"> {{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
     		</div>
     			
-    			
     		{% endfor %}
-
-    	</div>
+        </div>
+    	
+    </div>
 
     </div>
 

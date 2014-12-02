@@ -80,29 +80,27 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <!-- Event Listings -->
 
-<div class="col-sm-4" class="event-list">
+<div class="col-sm-4">
 	
-	<div class="col-sm-1"></div>
-		<div class="col-sm-10" class="event-list" id="userpoint">
-			<div class="row">
-				<div id="recent-events">Recent Events</div>
-			</div>
-						
-			<div class="row">
-				
-				{% for quake in recent_quakes %}
-					<div class="quake-list">
-						<img class="small-icon" src="/static/images/quake-icon.png"/>
-						<div class="recent-title quake-orange"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a></div>
-						<div class="recent-datetime">{{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
-					</div>
-				{% endfor %}
-
-			</div>
-
-			
+	<div class="event-list" id="userpoint">
+		<div class="row">
+			<div id="recent-events">Recent Events</div>
 		</div>
-	<div class="col-sm-1"></div>
+					
+		<div class="row">
+			
+			{% for quake in recent_quakes %}
+				<div class="quake-list">
+					<img class="small-icon" src="/static/images/quake-icon.png"/>
+					<div class="recent-title quake-orange"><a href="/quakes/{{ quake.quake_id }}">{{ quake.quake_title }}</a></div>
+					<div class="recent-datetime">{{ quake.quake_datetime.strftime('%b %d, %Y at %I:%M %p') }}</div>
+				</div>
+			{% endfor %}
+
+		</div>
+
+	</div>
+	
 </div>
 
 <!-- Map of 10 Most Recent Events -->

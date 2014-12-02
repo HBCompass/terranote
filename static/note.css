@@ -74,6 +74,10 @@ a {
 	padding-bottom: 10px;
 }
 
+.event-list {
+	padding-left: 10px;
+}
+
 #recent-events{
 	font-size: 20px;
 	text-align: center;
